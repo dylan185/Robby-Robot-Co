@@ -14,7 +14,7 @@
 int main() {
 	// Init Windows
 	newWin mainWin(640, 480, "Shop");
-	//mainWin.test();
+	mainWin.test();
 	mainWin.newWinProp();
 	mainWin.createLogin();
 	mainWin.createPM();
@@ -23,6 +23,10 @@ int main() {
 	mainWin.listParts();
 	mainWin.listModels();
 	mainWin.createHead();
+	mainWin.createArm();
+	mainWin.createTorso();
+	mainWin.createBattery();
+	mainWin.createLocomotor();
 
 	mainWin.newWinShow();
 

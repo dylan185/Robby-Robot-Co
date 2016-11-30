@@ -11,9 +11,10 @@
 
 using namespace std;
 
-void RobotModel::print() {
-	cout << "\tName: " << name << "\tModel Number: " << modelNum << "\n\t\tHead: " << parts[0]->getName() << "\n\t\tArm: " << parts[1]->getName() << "\n\t\tTorso: " << parts[2]->getName() << "\n\t\tBattery: " << parts[3]->getName() << "\n\t\tLocomotor: " << parts[4]->getName() << endl;
-
+string RobotModel::print() {
+	//cout << "\tName: " << name << "\tModel Number: " << modelNum << "\n\t\tHead: " << parts[0]->getName() << "\n\t\tArm: " << parts[1]->getName() << "\n\t\tTorso: " << parts[2]->getName() << "\n\t\tBattery: " << parts[3]->getName() << "\n\t\tLocomotor: " << parts[4]->getName() << endl;
+	string s = "Name: " + name + "\tModel Number: " + modelNum + "\n\tHead: " + parts[0]->getName() + "\n\tArm: " + parts[1]->getName() + "\n\tTorso: " + parts[2]->getName() + "\n\tBattery: " + parts[3]->getName() + "\n\tLocomotor: " + parts[4]->getName() + "\n";
+	return s;
 }
 void RobotModel::setPrice() {
 	price = 0;

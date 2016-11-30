@@ -9,7 +9,8 @@ using namespace std;
 
 string Arm::print() {
     //cout << "\tType: " << type << setw(8) << " | Name: " << name << setw(8) << " | Part Number: " << partNum << endl;
-	return "";
+	string s = "Type: " + getType() + "  Name: " + getName() + " PartNum: " + getPartNum();
+	return s;
 };
 string Arm::getType() {
     return type;

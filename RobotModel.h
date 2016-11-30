@@ -16,7 +16,7 @@ class RobotModel {
 public:
 	RobotModel(string n, string num, vector<RobotPart*> temp):
 	    name(n), modelNum(num), parts(temp) {}
-	void print();
+	string print();
     void printBasic();
     string getName(){
         return name;
