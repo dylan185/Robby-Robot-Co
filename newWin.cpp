@@ -1,28 +1,28 @@
 #include "newWin.h"
 //Create the constant vectors for the robots and models
-//vector<RobotPart*> partList;// = readPartList();
-//vector<RobotModel*> modelList; //= readRobotModels();
-//vector<RobotModel*> temp;
-//vector<RobotPart*> temp1;
-//vector<RobotPart*> temp2;
-//vector<RobotModel*>::iterator cipher;
-//vector<RobotPart*>::iterator citer;
+vector<RobotPart*> partList;// = readPartList();
+vector<RobotModel*> modelList; //= readRobotModels();
+vector<RobotModel*> temp;
+vector<RobotPart*> temp1;
+vector<RobotPart*> temp2;
+vector<RobotModel*>::iterator cipher;
+vector<RobotPart*>::iterator citer;
 
 //basic struct for creating input
 //struct Info {
-	//Fl_Input* name;
-	//Fl_Float_Input* cost;
-	//Fl_Input* partNum;
-	//Fl_Float_Input* weight;
+//Fl_Input* name;
+//Fl_Float_Input* cost;
+//Fl_Input* partNum;
+//Fl_Float_Input* weight;
 
-	// Saved values
-	//char nval[40];
-	//double  wval;
-	//char pval[40];
-	//double  cval;
+// Saved values
+//char nval[40];
+//double  wval;
+//char pval[40];
+//double  cval;
 //};
-/*
-void test() {
+
+void newWin::test() {
 	partList.push_back(new Head("Test Head", "00000", 1.00, 0));
 	partList.push_back(new Arm("Test Arm", "00001", 2.00, 0));
 	partList.push_back(new Torso("Test Torso", "00002", 3.00, 0, 0));
@@ -31,10 +31,10 @@ void test() {
 	for (citer = partList.begin(); citer != partList.end(); citer++) {
 		temp2.push_back(*citer);
 	}
-	modelList.push_back(new RobotModel("Test model", "10101", temp2));
+	//modelList.push_back(new RobotModel("Test model", "10101", temp2));
 	temp2.clear();
 }
-*/
+
 void newWin::newWinProp() {
 	win = new Fl_Window(x, y, label);
 	win->color(FL_WHITE);
@@ -128,12 +128,12 @@ void newWin::createModel() {
 }
 
 void newWin::listParts() {
-	
+
 	partLst = new Fl_Group(0, 30, 640, 450);
 	partLst->begin();
 	// Title
 	Fl_Box *title = new Fl_Box(50, 50, 540, 30);
-	
+
 	title->label("Listing parts");
 	title->labelsize(20);
 	//Fl_Text_Display *disp = new Fl_Text_Display(20, 20, 640 - 40, 480 - 40, "Display");
@@ -143,13 +143,13 @@ void newWin::listParts() {
 	//win->resizable(*disp);
 	//win->show();
 	// Text
-	
+
 	//for(citer = partList.begin(); citer != partList.end(); citer++) {
 	//	buff->text((buff->text() + (*citer)->print() + "\n").c_str());
 	//}
-	
+
 	//win->resizable(*disp);
-	
+
 	partLst->end();
 	leave->callback((Fl_Callback*)leaveCB);
 	partLst->hide();
@@ -179,14 +179,14 @@ void newWin::createHead() {
 	title->label("Creating a Head.");
 	title->labelsize(20);
 	Fl_Button *leave = new Fl_Button(230, 350, 150, 50, "Leave");
-	//input.name = new Fl_Input(100, 150, 150, 50,     "Name");
-	//input.partNum = new Fl_Input(100, 200, 150, 50, "Part Number");
-	//input.weight = new Fl_Float_Input(100, 250, 150, 50, "weight");
-	//input.cost = new Fl_Float_Input(100, 300, 150, 50, "cost");
-	//Fl_Button *sendbtn = new Fl_Button(450, 400, 150, 50, "Send");
+	Fl_Input *name = new Fl_Input(100, 150, 150, 50, "Name");
+	Fl_Input *partNum = new Fl_Input(100, 200, 150, 50, "Part Number");
+	Fl_Float_Input *weight = new Fl_Float_Input(100, 250, 150, 50, "weight");
+	Fl_Float_Input *cost = new Fl_Float_Input(100, 300, 150, 50, "cost");
+	Fl_Button *sendbtn = new Fl_Button(450, 400, 150, 50, "Send");
 	head->end();
 	leave->callback((Fl_Callback*)leaveCB);
-	//sendbtn->callback(sendPartCB, &input);
+	sendbtn->callback(sendPartCB);
 	head->hide();
 }
 
@@ -235,13 +235,13 @@ void newWin::createLocomotor() {
 	locomotor->hide();
 }
 
-void newWin::loginBtnCB(Fl_Widget *w, void *v) {	
-		((Fl_Group*)(w->parent()))->hide();
-		((Fl_Group*)(w->parent()->parent()->child(2)))->show();
+void newWin::loginBtnCB(Fl_Widget *w, void *v) {
+	((Fl_Group*)(w->parent()))->hide();
+	((Fl_Group*)(w->parent()->parent()->child(2)))->show();
 }
 void newWin::partBtnCB(Fl_Widget *w, void *v) {
-		((Fl_Group*)(w->parent()))->hide();
-		((Fl_Group*)(w->parent()->parent()->child(3)))->show();
+	((Fl_Group*)(w->parent()))->hide();
+	((Fl_Group*)(w->parent()->parent()->child(3)))->show();
 }
 void newWin::modelBtnCB(Fl_Widget *w, void *v) {
 	((Fl_Group*)(w->parent()))->hide();
@@ -276,20 +276,14 @@ void newWin::headBtnCB(Fl_Widget *w, void *v) {
 //	((Fl_Group*)(w->parent()->parent()->child(11)))->show();
 //}
 //void newWin::setNameCB(Fl_Widget *w, void *v) {
-	//string s = "Enter the part name";
-	//string d = "Failed";
-	//string a = Fl_Input(s, d);
-	//name = a;
-	
+//string s = "Enter the part name";
+//string d = "Failed";
+//string a = Fl_Input(s, d);
+//name = a;
+
 //}
 void newWin::sendPartCB(Fl_Widget *w, void *v) {
-	//Info* input = reinterpret_cast<Info*>(v);
-	
-	//strcpy_s(input->nval, input->name->value());
-	//strcpy_s(input->pval, input->partNum->value());
-	//input->cval = stod(input->cost->value());
-	//input->wval = stod(input->weight->value());
-	//partList.push_back(new Head(input->nval, input->pval , input->wval, input->cval));
+	partList.push_back(new Head(((Fl_Input*)w->parent()->child(3))->value(), ((Fl_Input*)w->parent()->child(4))->value(), ((Fl_Float_Input*)w->parent()->child(5))->value(), ((Fl_Float_Input*)w->parent()->child(6))->value()));
 	((Fl_Group*)(w->parent()))->hide();
 	((Fl_Group*)(w->parent()->parent()->child(2)))->show();
 }
@@ -300,4 +294,3 @@ void newWin::leaveCB(Fl_Widget *w, void *v) {
 void newWin::quitCB(Fl_Widget *w, void *v) {
 	exit(0);
 }
-
