@@ -1,4 +1,4 @@
-# improved-octo-potatoe
+# Robby Robot Shop
 Robby Robot Co.
 
 This project is to create a working program that will allow customers to build, select, and order from different models of robots. 
